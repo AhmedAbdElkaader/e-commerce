@@ -1,0 +1,52 @@
+<div class="main">
+    <div class="">
+        <button class="add_button" mat-raised-button data-bs-toggle="modal" data-bs-target="#exampleModal"> + Add
+            Categori</button>
+    </div>
+    <div class="container">
+        <div class="filter">
+            <span class="material-symbols-outlined">
+                tune
+            </span>
+            <input type="search" placeholder="Find Category ...." class="form-control">
+        </div>
+        <div class="row mt-5">
+            <div class="col-12 col-md-4 col-xl-4" *ngFor="let item of category_arr">
+                <div class="card_style" (click)="cat_details(item.id)">
+                    <img class="img-fluid" [src]="item.image.image">
+                    <h1 class="text-center">{{item.name}}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div *ngIf="!showUploadFile">
+                    <label>Category Name</label>
+                    <input [(ngModel)]="categoriName" type="text" class="form-control">
+                </div>
+                <div *ngIf="showUploadFile">
+                    <form [formGroup]="uploadForm">
+                        <label>Category Image</label>
+                        <input (change)="uploadFile($event)" type="file" class="form-control">
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button *ngIf="!showUploadFile" (click)="addCategori()" type="button"
+                    class="btn btn-primary">Continue</button>
+                <button *ngIf="showUploadFile" (click)="addCategroiImage()" data-bs-dismiss="modal" type="button"
+                    class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

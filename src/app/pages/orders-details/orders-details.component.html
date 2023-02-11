@@ -1,0 +1,26 @@
+<section>
+        <div class="container table-responsive">
+            <h1>Order For {{clientName}}</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price per piece</th>
+                        <th scope="col">Quantities</th>
+                        <th scope="col">Total Price</th>
+    
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="cursor: pointer" *ngFor="let item of product_arr">
+                        <td>{{item.ordersproducts.id}}</td>
+                        <td>{{item.ordersproducts.name}}</td>
+                        <td>{{item.ordersproducts.price}}</td>
+                        <td>{{item.ammount}}</td>
+                        <td>{{item.ammount * item.ordersproducts.price}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>

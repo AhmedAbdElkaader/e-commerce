@@ -1,0 +1,21 @@
+header{
+    margin-top:10px
+}
+.icons span{
+    color: gray;
+}
+.icons {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+}
+.icons .icon {
+    margin-left: 15px
+}
+.icons .btn {
+    border: 1px solid #ec407a;
+}
+hr {
+    border-top: 1px solid #cacaca;
+}

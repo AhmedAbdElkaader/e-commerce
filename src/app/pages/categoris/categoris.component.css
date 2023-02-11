@@ -1,0 +1,41 @@
+.main {
+    overflow: scroll;
+    height: 80vh;
+    padding-bottom: 10px
+}
+img {
+    width: 100%;
+}
+.card_style {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    padding: 5px;
+    border-radius: 10px;
+}
+.card_style h1 {
+    margin: 10px 0
+}
+.add_button{
+    background: #ec407a !important;
+    color: #fff !important;
+}
+.filter {
+    display: flex;
+    width: 70%;
+    align-items: center;
+    margin: 16px auto 5px auto;
+
+}
+.filter input{
+    margin-left: 14px;
+}
+.filter span {
+    background: gainsboro;
+    padding: 5px;
+    border-radius: 5px;
+}
+@media only screen and (max-width:768px) {
+    .filter{
+        width:97%;
+    }
+ }

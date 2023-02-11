@@ -1,0 +1,44 @@
+<!-- <mat-toolbar>
+    <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon >menu</mat-icon>
+    </button>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>person</mat-icon>
+    </button>
+    <span>Register</span>
+
+</mat-toolbar>
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+      <p>Auto-resizing sidenav</p>
+      <ul>
+        <li>
+          home
+        </li>
+        <li>
+            categoris
+          </li>
+      </ul>
+    </mat-drawer>
+  
+    <div class="example-sidenav-content">
+    </div>
+  
+  </mat-drawer-container> -->
+<!-- <div class="row">
+  <div class="col-3">
+    <app-side-bar></app-side-bar>
+  </div>
+  <div class="col-9">
+    <app-header></app-header>
+    <router-outlet></router-outlet>
+  </div>
+</div> -->
+<router-outlet></router-outlet>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
+    <p style="color: white"></p>
+</ngx-spinner>

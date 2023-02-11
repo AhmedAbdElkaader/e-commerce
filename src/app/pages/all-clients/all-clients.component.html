@@ -1,0 +1,22 @@
+<section>
+    <div class="container">
+        <div class="mb-4 d-flex align-items-center">
+            <span class="material-symbols-outlined icon">
+                search
+            </span>
+            <input type="search" class="form-control" placeholder="Find Client">
+        </div>
+        <div class="row">
+            <div class="col-12 mb-3" *ngFor="let item of allClientsArr">
+                <div class="cardStyle" (click)="cleintDetails(item.id)">
+                    <img src="assets/images/woman.png">
+                    <div>
+                        <p>{{item.email}}</p>
+                        <p>{{item.phone_number}}</p>
+                        <p>Orders({{item.orders.length}})</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

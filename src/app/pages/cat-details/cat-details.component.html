@@ -1,0 +1,110 @@
+<section>
+    <div class="controls mb-3">
+        <button class="addButton" mat-raised-button data-bs-toggle="modal" data-bs-target="#product"> + Add Product</button>
+        <button mat-raised-button  data-bs-toggle="modal" data-bs-target="#category"> Edit Category</button>
+        <button mat-raised-button color="warn" data-bs-toggle="modal" data-bs-target="#DeletCategory"> Delete Category</button>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-5">
+            <img class="img-fluid" [src]="cat_obj.image">
+            <h1>{{cat_obj.name}}</h1>
+        </div>
+        <hr>
+        <h2>Prodcuts</h2>
+        <div class="row" *ngIf="showProduct">
+            <div class="col-3" *ngFor="let item of product_arr">
+                <div (click)="productDetails(item.id)">
+                        <img class="img-fluid" [src]="item.images[0]">
+                        <p>{{item.name}}</p>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="!showProduct">
+            <h2 class="text-center">No Products Found</h2>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="product" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="productForm" *ngIf="!showUpload">
+                    <div >
+                        <label>Product Name</label>
+                        <input formControlName="name" type="text" class="form-control">
+                    </div>
+                    <div class="mt-2">
+                        <label>Product Price</label>
+                        <input formControlName="price" type="text" class="form-control">
+                    </div>
+                    <div class="mt-2">
+                        <label>Product description</label>
+                        <textarea formControlName="description" type="text" class="form-control"></textarea>
+                    </div>
+                    <div class="mt-2">
+                        <label>Product quantity</label>
+                        <input formControlName="quantity" type="text" class="form-control">
+                    </div>
+                </form>
+                <div *ngIf="showUpload">
+                    <label>Product Image</label>
+                    <input (change)="uploadFile($event)" type="file" class="form-control">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button *ngIf="!showUpload" (click)="addProduct()" type="button"
+                        class="btn btn-primary">Continue</button>
+                    <button *ngIf="showUpload" data-bs-dismiss="modal" (click)="addProductImage()" type="button"
+                        class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="category" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <label>New Category Name</label>
+                    <input [(ngModel)]="cat_name" type="text" class="form-control">
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                    <button (click)="editCat()" type="button" data-bs-dismiss="modal" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="DeletCategory" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div>
+                    <h1> Are You Sure Delete this Category ({{cat_obj.name}})</h1>
+                </div>
+
+                <div class="modal-footer">
+                    <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+
+                    <button (click)="delet_cat()" type="button" data-bs-dismiss="modal" class="btn btn-primary">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

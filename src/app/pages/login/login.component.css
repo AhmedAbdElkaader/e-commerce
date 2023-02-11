@@ -1,0 +1,18 @@
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.main form {
+    width: 500px
+}
+button{
+    width: 100%;
+    background: #ec407a;
+    border: none;
+    padding: 10px 0
+}
+button:hover{
+    background: #3d101f
+}

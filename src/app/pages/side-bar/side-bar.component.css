@@ -1,0 +1,46 @@
+section {
+    padding: 10px
+}
+.main {
+    background: #2d2d31;
+    height: 97vh;
+    color: #fff;
+    border-radius: 10px;
+    padding: 25px 45px
+}
+.main .menu{
+    display: flex;
+    align-items: center;
+    padding: 10px 5px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+.menu p {
+    margin-top:2px;
+    margin-bottom: 0;
+    margin-left: 10px 
+}
+.active {
+    background: #ec407a;
+}
+
+@media only screen and (max-width:768px) {
+    .inPC {
+       display: none
+    }
+    .main{
+        padding: 20px 13px;
+    }
+}
+
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 1) { 
+    .inMob {
+        display: none
+    }
+   
+ 
+}
