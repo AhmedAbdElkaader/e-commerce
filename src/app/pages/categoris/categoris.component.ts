@@ -40,7 +40,14 @@ export class CategorisComponent implements OnInit {
         this.dataFound = true
         this.category_arr = res
         this.category_arr.forEach((element :any) => {
-          element.image.image = this._sanitizer.bypassSecurityTrustUrl(`data:image/png;base64,`+element.image.image);
+
+          if(element.image != null){
+            element.image.image = this._sanitizer.bypassSecurityTrustUrl(`data:image/png;base64,`+element.image.image);
+          }else {
+            element.image = {
+              image : "assets/images/rk.jpeg"
+            } 
+          }
         });
       }else {
         this.dataFound = false
@@ -65,6 +72,8 @@ export class CategorisComponent implements OnInit {
       console.log(res)
       this.categroiId = res
       this.showUploadFile = true
+    }, (err :any) => {
+      this.rest.erorrToaster(err.error.message)
     })
   }
 

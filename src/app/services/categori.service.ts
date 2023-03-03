@@ -79,7 +79,7 @@ export class CategoriService {
       redirect: 'follow'
     };
 
-   return fetch(`${this.baseUrl}/api/images/cat`, requestOptions)
+   return fetch(`${this.baseUrl}/images/cat`, requestOptions)
 
   }
 
@@ -118,7 +118,7 @@ export class CategoriService {
       body: raw,
       redirect: 'follow'
     };
-   return fetch(`${this.baseUrl}/api/cats/?id=${id}`, requestOptions)
+   return fetch(`${this.baseUrl}/cats/?id=${id}`, requestOptions)
      
   }
 

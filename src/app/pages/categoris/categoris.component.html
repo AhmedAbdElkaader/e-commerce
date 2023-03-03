@@ -13,7 +13,7 @@
         <div class="row mt-5">
             <div class="col-6 col-md-3 col-xl-3" *ngFor="let item of category_arr">
                 <div class="card_style" style="cursor: pointer" (click)="cat_details(item.id)">
-                    <img class="img-fluid" [src]="item.image.image">
+                    <img class="img-fluid"  [src]="item.image.image">
                     <h1 class="text-center">{{item.name}}</h1>
                 </div>
             </div>

@@ -66,10 +66,10 @@
             </thead>
             <tbody>
                 <tr style="cursor: pointer">
-                    <td>{{item.id}}</td>
-                    <td>{{item.name}}</td>
-                    <td>{{item.issue_date | date:'EEEE d MMMM y '}}</td>
-                    <td>{{item.quantities}}</td>
+                    <td>{{item.orderspackages.id}}</td>
+                    <td>{{item.orderspackages.name}}</td>
+                    <td>{{item.orderspackages.issue_date | date:'EEEE d MMMM y '}}</td>
+                    <td>{{item.ammount}}</td>
                     <td>
                         <table class="table table-striped">
                             <thead>
@@ -79,7 +79,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr style="cursor: pointer" *ngFor="let pack of item.ProductPackages">
+                                <tr style="cursor: pointer" *ngFor="let pack of item.orderspackages.ProductPackages">
                                     <td>{{pack.products.name}}</td>
                                     <td>{{pack.amount}}</td>
                                 </tr>
