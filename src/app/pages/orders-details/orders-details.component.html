@@ -1,26 +1,94 @@
 <section>
-        <div class="container table-responsive">
-            <h1>Order For {{clientName}}</h1>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Price per piece</th>
-                        <th scope="col">Quantities</th>
-                        <th scope="col">Total Price</th>
-    
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr style="cursor: pointer" *ngFor="let item of product_arr">
-                        <td>{{item.ordersproducts.id}}</td>
-                        <td>{{item.ordersproducts.name}}</td>
-                        <td>{{item.ordersproducts.price}}</td>
-                        <td>{{item.ammount}}</td>
-                        <td>{{item.ammount * item.ordersproducts.price}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
+    <div class="container table-responsive">
+        <h1>Order For {{clientName}}</h1>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Paid</th>
+                    <th scope="col">Delivered</th>
+                    <th scope="col">Total Price</th>
+
+                </tr>
+            </thead>
+            <tbody >
+                <tr style="cursor: pointer" *ngFor="let item of order_arr">
+                    <td>{{item.issue_date | date:'EEEE d MMMM y '}}</td>
+                    <td *ngIf="item.cashed == true">Cash On Delvery</td>
+                    <td *ngIf="item.cashed == false">Vodafon Cash</td>
+                    <td *ngIf="item.paid == null">No</td>
+                    <td *ngIf="item.paid != null">Yes</td>
+                    <td *ngIf="item.delivered == null">No</td>
+                    <td *ngIf="item.delivered != null">Yes</td>
+                    <td>{{item.total_price}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr>
+        <h3>Products</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price per piece</th>
+                    <th scope="col">Quantities</th>
+                    <th scope="col">Total Price</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="cursor: pointer" *ngFor="let item of product_arr">
+                    <td>{{item.ordersproducts.id}}</td>
+                    <td>{{item.ordersproducts.name}}</td>
+                    <td>{{item.ordersproducts.price}}</td>
+                    <td>{{item.ammount}}</td>
+                    <td>{{item.ammount * item.ordersproducts.price}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <h3>Packages</h3>
+        <table class="table table-striped" *ngFor="let item of packagesArr">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Quantities</th>
+                    <th scope="col-6">Products</th>
+                    <th scope="col">Total Price</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="cursor: pointer">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.issue_date | date:'EEEE d MMMM y '}}</td>
+                    <td>{{item.quantities}}</td>
+                    <td>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="cursor: pointer" *ngFor="let pack of item.products">
+                                    <td>{{pack.name}}</td>
+                                    <td>{{pack.price}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td>{{item.total_price}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

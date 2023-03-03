@@ -12,6 +12,8 @@ export class OrdersDetailsComponent implements OnInit {
   order_id:any
   product_arr :any
   clientName : any
+  packagesArr : any = []
+  order_arr:any = []
   constructor(private route : ActivatedRoute , private rest :CategoriService){}
 
   ngOnInit(){
@@ -22,7 +24,9 @@ export class OrdersDetailsComponent implements OnInit {
   getData(){
     this.rest.orderDetails(this.order_id).subscribe((res :any) => {
       console.log(res)
+      this.order_arr.push(res)
       this.clientName = res.client.email
+      this.packagesArr = res.packages
       this.product_arr = res.OrdersProducts
       console.log( this.product_arr)
     })

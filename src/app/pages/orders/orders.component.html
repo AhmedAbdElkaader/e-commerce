@@ -7,7 +7,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Products</th>
                     <th scope="col">Date</th>
-                    <th scope="col">Products</th>
+                    <th scope="col">Packages</th>
                     <th scope="col">Status</th>
                     <th scope="col">Paid</th>
                     <th scope="col">Delivered</th>
@@ -20,7 +20,7 @@
                     <td>{{item.id}}</td>
                     <td>{{item.OrdersProducts.length}}</td>
                     <td>{{item.issue_date | date:'EEEE d MMMM y '}}</td>
-                    <td>{{item.OrdersProducts.length}}</td>
+                    <td>{{item.packages.length}}</td>
                     <td *ngIf="item.cashed == true">Cash On Delvery</td>
                     <td *ngIf="item.cashed == false">Vodafon Cash</td>
                     <td *ngIf="item.paid == null">No</td>
