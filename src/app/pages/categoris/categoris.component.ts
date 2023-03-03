@@ -89,7 +89,8 @@ export class CategorisComponent implements OnInit {
   addCategroiImage() {
     this.rest.showSpiner()
     console.log(this.uploadForm.get('profile').value.name)
-    this.rest.ulpoad_cat_image(this.categroiId, this.uploadForm.get('profile').value)
+    if(this.uploadForm.get('profile').value.name != undefined){
+      this.rest.ulpoad_cat_image(this.categroiId, this.uploadForm.get('profile').value)
       .then((response: any) => response.text())
       .then((result: any) => {
         this.rest.succesToast("Category Added Successfuly")
@@ -99,6 +100,10 @@ export class CategorisComponent implements OnInit {
       .catch((error: any) => {
         this.rest.hideSpiner()
       });
+    }else {
+      this.rest.hideSpiner()
+    }
+
   }
 
   cat_details(id:any){

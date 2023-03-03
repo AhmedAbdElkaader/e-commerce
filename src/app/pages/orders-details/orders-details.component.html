@@ -14,7 +14,7 @@
                 </tr>
             </thead>
             <tbody >
-                <tr style="cursor: pointer" *ngFor="let item of order_arr">
+                <tr  *ngFor="let item of order_arr">
                     <td>{{item.issue_date | date:'EEEE d MMMM y '}}</td>
                     <td *ngIf="item.cashed == true">Cash On Delvery</td>
                     <td *ngIf="item.cashed == false">Vodafon Cash</td>
@@ -41,7 +41,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr style="cursor: pointer" *ngFor="let item of product_arr">
+                <tr  *ngFor="let item of product_arr">
                     <td>{{item.ordersproducts.id}}</td>
                     <td>{{item.ordersproducts.name}}</td>
                     <td>{{item.ordersproducts.price}}</td>
@@ -65,7 +65,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr style="cursor: pointer">
+                <tr >
                     <td>{{item.orderspackages.id}}</td>
                     <td>{{item.orderspackages.name}}</td>
                     <td>{{item.orderspackages.issue_date | date:'EEEE d MMMM y '}}</td>
