@@ -13,7 +13,7 @@
 
                 </tr>
             </thead>
-            <tbody>
+            <tbody *ngIf="!showMasge">
                 <tr style="cursor: pointer" (click)="orderDetails(item.id)" *ngFor="let item of order_arr">
                     <td>{{item.id}}</td>
                     <td>{{item.client.email}}</td>
@@ -23,6 +23,7 @@
                     <td>{{item.total_price}}</td>
                 </tr>
             </tbody>
+            <h1 *ngIf="showMasge">NO DATA FOUND</h1>
         </table>
     </div>
 </section>

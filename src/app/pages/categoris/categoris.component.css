@@ -34,6 +34,12 @@ img {
     padding: 5px;
     border-radius: 5px;
 }
+.noData {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
 @media only screen and (max-width:768px) {
     .filter{
         width:97%;

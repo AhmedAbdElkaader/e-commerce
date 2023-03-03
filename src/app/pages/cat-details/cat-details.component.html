@@ -12,10 +12,10 @@
         <hr>
         <h2>Prodcuts</h2>
         <div class="row" *ngIf="showProduct">
-            <div class="col-3" *ngFor="let item of product_arr">
-                <div (click)="productDetails(item.id)">
+            <div class="col-12 col-md-3" *ngFor="let item of product_arr">
+                <div (click)="productDetails(item.id)" class="text-center">
                         <img class="img-fluid" [src]="item.images[0]">
-                        <p>{{item.name}}</p>
+                        <h2>{{item.name}}</h2>
                 </div>
             </div>
         </div>

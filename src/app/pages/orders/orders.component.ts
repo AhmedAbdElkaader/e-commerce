@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class OrdersComponent implements OnInit {
 
   order_arr : any
+  showMasge = false
   constructor(private rest : CategoriService , private route : Router){}
 
   ngOnInit(){
@@ -19,7 +20,12 @@ export class OrdersComponent implements OnInit {
   getData(){
     this.rest.getOrders().subscribe((res :any) => {
       console.log(res)
-      this.order_arr = res
+      if(res.length == 0){
+        this.showMasge =  true
+      }else {
+        this.showMasge =  false
+        this.order_arr = res
+      }
     })
   }
 

@@ -1,0 +1,112 @@
+<div class="main">
+    <div class="">
+        <button class="add_button" mat-raised-button data-bs-toggle="modal" data-bs-target="#newPack"> + Add
+            New Packge</button>
+    </div>
+    <section class="mt-5">
+        <div class="container table-responsive">
+            <h1>All Packges</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Products</th>
+                        <th scope="col">Quantities</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Percentage</th>
+                        <th scope="col">Potal Price</th>
+
+                    </tr>
+                </thead>
+                <tbody *ngIf="dataFound">
+                    <tr style="cursor: pointer" (click)="packDetails(item.id)" *ngFor="let item of allpackeges">
+                        <td>{{item.id}}</td>
+                        <td>{{item.products.length}}</td>
+                        <td>{{item.quantities}}</td>
+                        <td>{{item.issue_date}}</td>
+                        <td>{{item.discount}}</td>
+                        <td>{{item.total_price}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <div *ngIf="!dataFound">
+        <h1>No Data Found</h1>
+    </div>
+</div>
+
+<div class="modal fade" id="newPack" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div *ngIf="packImageStatus">
+                    <div class="form-group">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Chosse Category
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" (click)="getCatId(item)"
+                                        *ngFor="let item of cat_arr">{{item.name}}</a></li>
+                            </ul>
+                        </div>
+                        <p style="margin-top: 5px; margin-left: 5px">{{catName}}</p>
+                    </div>
+                    <div class="form-group" *ngIf="status_prod">
+                        <div class="dropdown" *ngIf="ifProd">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Chosse Product
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" (click)="choseProd(item)"
+                                        *ngFor="let item of prod_arr">{{item.name}}</a></li>
+                            </ul>
+                        </div>
+                        <p *ngIf="ifProd" style="margin-top: 5px; margin-left: 5px">{{prodName}}</p>
+                        <p *ngIf="!ifProd">No Product Found in this Category</p>
+                    </div>
+                    <div class="form-group" *ngIf="ifProd">
+                            <label>Product Quantity</label>
+                            <input type="number" [(ngModel)]="Quantity" class="form-control">
+                        </div>
+                    <button *ngIf="ifProd" class="btn btn-sucsses" (click)="add()">+</button>
+                   
+
+                    <hr *ngIf="ifProd">
+                    <div>
+                        <ul>
+                            <li *ngFor="let item of arr_choise_prod">
+                                {{item}}
+                            </li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <label>Pack Name</label>
+                        <input type="text" [(ngModel)]="pack_name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Discount</label>
+                        <input type="text" [(ngModel)]="discount" class="form-control">
+                    </div>
+                </div>
+                <div *ngIf="!packImageStatus">
+                    <label>Pack Image</label>
+                    <input (change)="uploadFile($event)" type="file" class="form-control">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button *ngIf="packImageStatus" (click)="save()" type="button" class="btn btn-primary">Continue</button>
+                <button data-bs-dismiss="modal" *ngIf="!packImageStatus" (click)="addPackImage()" type="button"
+                    class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

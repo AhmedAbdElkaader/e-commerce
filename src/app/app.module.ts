@@ -25,6 +25,8 @@ import { SideBarComponent } from './pages/side-bar/side-bar.component';
 import { ToastrModule } from 'ngx-toastr';
 import { MainComponent } from './pages/main/main.component';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { PackegsComponent } from './pages/packegs/packegs.component';
+import { PackegDetailsComponent } from './pages/packeg-details/packeg-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +42,9 @@ import { NgxSpinnerModule } from "ngx-spinner";
     OrdersComponent,
     OrdersDetailsComponent,
     SideBarComponent,
-    MainComponent
+    MainComponent,
+    PackegsComponent,
+    PackegDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,23 @@
+section{
+    overflow: scroll;
+    height: 80vh;
+    padding-bottom: 5px
+}
+.controls {
+    margin-bottom: 10px
+}
+.controls button {
+    margin-right: 5px
+}
+.addButton{
+    background: #ec407a !important;
+    color: #fff !important;
+}
+hr {
+    border-top: 1px solid #cacaca;
+}
+@media only screen and (max-width:768px) {
+    .controls button{
+        margin-bottom:15px
+    }
+ }

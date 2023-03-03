@@ -11,6 +11,8 @@ import { OrdersComponent } from './pages/orders/orders.component';
 import { OrdersDetailsComponent } from './pages/orders-details/orders-details.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MainComponent } from './pages/main/main.component';
+import { PackegsComponent } from './pages/packegs/packegs.component';
+import { PackegDetailsComponent } from './pages/packeg-details/packeg-details.component';
 
 const routes: Routes = [
   {
@@ -64,6 +66,14 @@ const routes: Routes = [
       {
         path: 'order_details/:id',
         component: OrdersDetailsComponent
+      },
+      {
+        path: 'packges',
+        component: PackegsComponent
+      },
+      {
+        path: 'packges_details/:id',
+        component: PackegDetailsComponent
       },
     ]
   },

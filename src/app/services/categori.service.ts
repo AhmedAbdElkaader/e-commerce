@@ -8,7 +8,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 })
 export class CategoriService {
 
-  baseUrl = "http://37.61.212.46:33333/api"
+  baseUrl = "https://1275-156-213-96-209.ngrok.io/api"
   auth_token: any
 
   constructor(private http: HttpClient , private toastr: ToastrService , 
@@ -70,7 +70,7 @@ export class CategoriService {
       redirect: 'follow'
     };
 
-   return fetch("http://37.61.212.46:33333/api/images/cat", requestOptions)
+   return fetch("http://89.116.25.82:33331/api/images/cat", requestOptions)
 
   }
 
@@ -145,7 +145,7 @@ export class CategoriService {
       redirect: 'follow'
     };
 
-   return fetch("http://37.61.212.46:33333/api/images/", requestOptions)
+   return fetch("http://89.116.25.82:33331/api/images/", requestOptions)
 
   }
 
@@ -226,6 +226,74 @@ export class CategoriService {
     return this.http.get(`${this.baseUrl}/orders/detailed`, options)
   }
 
+  // packges
+
+  addPack(obj:any){
+    this.auth_token = localStorage.getItem("access_token")
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.auth_token}`
+    })
+    return this.http.post(`${this.baseUrl}/packages/`, obj, { headers: headers })
+  }
+  getPackges(){
+    this.auth_token = localStorage.getItem("access_token")
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.auth_token}`
+    })
+    return this.http.get(`${this.baseUrl}/packages/`, { headers: headers })
+  }
+
+  ulpoad_pack_image(id: any, file: any) {
+    this.auth_token = localStorage.getItem("access_token")
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.auth_token}`
+    })
+
+    var myHeaders = new Headers();
+    myHeaders.append('Authorization', `Bearer ${this.auth_token}`)
+
+    var formdata = new FormData();
+    formdata.append("key", file, file.name);
+    formdata.append("package_id", id);
+
+    var requestOptions:any = {
+      method: 'POST',
+      headers: myHeaders,
+      body: formdata,
+      redirect: 'follow'
+    };
+
+   return fetch("http://89.116.25.82:33331/api/images/package", requestOptions)
+  }
+
+  packDetails(id:any){
+    this.auth_token = localStorage.getItem("access_token")
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.auth_token}`
+    })
+    return this.http.get(`${this.baseUrl}/packages/detailed?package_id=${id}`, { headers: headers })
+  }
+
+  deletPack(id:any){
+    this.auth_token = localStorage.getItem("access_token")
+    var myHeaders = new Headers();
+    myHeaders.append('Authorization', `Bearer ${this.auth_token}`)
+    myHeaders.append("Content-Type", "application/json");
+    var raw = JSON.stringify({
+      "id": id
+    });
+    var requestOptions:any = {
+      method: 'DELETE',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+   return fetch(`${this.baseUrl}/packages/?package_id=${id}`, requestOptions)
+  }
   // toster
 
   succesToast(name:any){

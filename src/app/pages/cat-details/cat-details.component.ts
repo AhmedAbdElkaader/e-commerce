@@ -69,7 +69,6 @@ export class CatDetailsComponent implements OnInit {
       console.log(res)
       this.product_id = res
       this.showUpload = true
-
     })
   }
 
@@ -90,7 +89,10 @@ export class CatDetailsComponent implements OnInit {
         this.rest.hideSpiner()
         console.log(result)
       })
-      .catch((error: any) => console.log('error', error));
+      .catch((error: any) => {
+        this.rest.erorrToaster("something wrong happened please reload page")
+        this.rest.hideSpiner()
+      });
   }
 
   editCat(){
@@ -115,7 +117,10 @@ export class CatDetailsComponent implements OnInit {
       console.log(result)
       this.routing.navigate(['main/categoris'])
     })
-    .catch(error => console.log('error', error));  
+    .catch(error => {
+      this.rest.erorrToaster("something wrong happened please reload page")
+      this.rest.hideSpiner()
+    });  
   }
 
   productDetails(id:any){

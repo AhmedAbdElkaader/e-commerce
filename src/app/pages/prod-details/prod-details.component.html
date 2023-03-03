@@ -1,15 +1,15 @@
 <section>
     <div class="mb-5">
-        <button class="me-2" (click)="addData()" mat-raised-button data-bs-toggle="modal" data-bs-target="#editproduct"> Edit Product</button>
+        <button class="me-2 mb-1" (click)="addData()" mat-raised-button data-bs-toggle="modal" data-bs-target="#editproduct"> Edit Product</button>
         <button color="warn" mat-raised-button data-bs-toggle="modal" data-bs-target="#DeletProd"> Delete Product</button>
     </div>
 
     <div class="container">
         <div class="row">
-            <div class="col-5">
+            <div class="col-12 col-md-5">
                     <img class="img-fluid" [src]="prodObj.images">
             </div>
-            <div class="col-5">
+            <div class="col-12 col-md-5">
                 <p> Name :  {{prodObj.name}}</p>
                 <p> Description : {{prodObj.description}}</p>
                 <p> Price : {{prodObj.price}}</p>

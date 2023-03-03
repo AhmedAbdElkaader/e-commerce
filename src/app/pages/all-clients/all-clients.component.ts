@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class AllClientsComponent implements OnInit {
 
   allClientsArr:any
+  showMasge = false
   constructor(private rest : CategoriService , private route : Router){}
 
   ngOnInit(){
@@ -20,7 +21,12 @@ export class AllClientsComponent implements OnInit {
   allClients(){
     this.rest.getAllCleints().subscribe((res:any)=>{
       console.log(res)
-      this.allClientsArr = res
+      if(res.length == 0){
+        this.showMasge = true
+      }else {
+        this.showMasge = false
+        this.allClientsArr = res
+      }
     })
   }
 

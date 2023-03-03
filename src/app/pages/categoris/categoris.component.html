@@ -1,10 +1,10 @@
 <div class="main">
     <div class="">
         <button class="add_button" mat-raised-button data-bs-toggle="modal" data-bs-target="#exampleModal"> + Add
-            Categori</button>
+            New Categori</button>
     </div>
     <div class="container">
-        <div class="filter">
+        <div class="filter" *ngIf="dataFound">
             <span class="material-symbols-outlined">
                 tune
             </span>
@@ -12,11 +12,14 @@
         </div>
         <div class="row mt-5">
             <div class="col-12 col-md-4 col-xl-4" *ngFor="let item of category_arr">
-                <div class="card_style" (click)="cat_details(item.id)">
+                <div class="card_style" style="cursor: pointer" (click)="cat_details(item.id)">
                     <img class="img-fluid" [src]="item.image.image">
                     <h1 class="text-center">{{item.name}}</h1>
                 </div>
             </div>
+        </div>
+        <div class="noData" *ngIf="!dataFound">
+            <h1>No Data Found</h1>
         </div>
     </div>
 </div>

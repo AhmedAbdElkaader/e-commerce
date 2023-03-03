@@ -17,6 +17,7 @@ export class CategorisComponent implements OnInit {
   image_file: any
   uploadForm: FormGroup | any;
   category_arr: any = []
+  dataFound = true
   constructor(private rest: CategoriService,
     private _sanitizer: DomSanitizer,
     private route : Router,
@@ -34,13 +35,23 @@ export class CategorisComponent implements OnInit {
   list_Of_cat() {
     this.rest.list_Of_cat().subscribe((res: any) => {
       console.log(res)
-      this.category_arr = res
-      this.category_arr.forEach((element :any) => {
-        element.image.image = this._sanitizer.bypassSecurityTrustUrl(`data:image/png;base64,`+element.image.image);
-      });
+      this.rest.hideSpiner()
+      if(res.length != 0){
+        this.dataFound = true
+        this.category_arr = res
+        this.category_arr.forEach((element :any) => {
+          element.image.image = this._sanitizer.bypassSecurityTrustUrl(`data:image/png;base64,`+element.image.image);
+        });
+      }else {
+        this.dataFound = false
+      }
+
 
       this.rest.hideSpiner()
       
+    },(err :any) => {
+      this.rest.erorrToaster("something wrong happened please reload page")
+      this.rest.hideSpiner()
     })
   }
 
