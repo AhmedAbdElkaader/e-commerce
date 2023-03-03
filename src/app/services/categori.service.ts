@@ -70,7 +70,7 @@ export class CategoriService {
       redirect: 'follow'
     };
 
-   return fetch("http://89.116.25.82:33331/api/images/cat", requestOptions)
+   return fetch("https://1275-156-213-96-209.ngrok.io/api/images/cat", requestOptions)
 
   }
 
@@ -109,7 +109,7 @@ export class CategoriService {
       body: raw,
       redirect: 'follow'
     };
-   return fetch(`http://37.61.212.46:33333/api/cats/?id=${id}`, requestOptions)
+   return fetch(`${this.baseUrl}/api/cats/?id=${id}`, requestOptions)
      
   }
 
@@ -145,7 +145,7 @@ export class CategoriService {
       redirect: 'follow'
     };
 
-   return fetch("http://89.116.25.82:33331/api/images/", requestOptions)
+   return fetch(`${this.baseUrl}/api/images/`, requestOptions)
 
   }
 
@@ -266,7 +266,7 @@ export class CategoriService {
       redirect: 'follow'
     };
 
-   return fetch("http://89.116.25.82:33331/api/images/package", requestOptions)
+   return fetch(`${this.baseUrl}/api/images/package`, requestOptions)
   }
 
   packDetails(id:any){
