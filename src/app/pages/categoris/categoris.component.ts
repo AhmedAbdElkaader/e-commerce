@@ -93,11 +93,12 @@ export class CategorisComponent implements OnInit {
       .then((response: any) => response.text())
       .then((result: any) => {
         this.rest.succesToast("Category Added Successfuly")
-        this.list_Of_cat()
-        
+        this.list_Of_cat()  
         console.log(result)
       })
-      .catch((error: any) => console.log('error', error));
+      .catch((error: any) => {
+        this.rest.hideSpiner()
+      });
   }
 
   cat_details(id:any){

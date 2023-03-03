@@ -45,12 +45,12 @@ export class CatDetailsComponent implements OnInit {
   getData(){
     this.rest.cat_full_details(this.cat_id).subscribe((res :any) => {
       console.log(res)
-      if(res.image.image != null){
-        res.image.image = this._sanitizer.bypassSecurityTrustUrl(`data:image/png;base64,`+ res.image.image);
-        this.cat_obj.image = res.image.image
-      }else {
-        this.cat_obj.image = "assets/images/rk.jpeg"
-      }
+      // if(res.image != null){
+      //   res.image.image = this._sanitizer.bypassSecurityTrustUrl(`data:image/png;base64,`+ res.image.image);
+      //   this.cat_obj.image = res.image.image
+      // }else {
+      //   this.cat_obj.image = "assets/images/rk.jpeg"
+      // }
       this.cat_obj.name = res.name
       
         res.products.forEach((element :any) => {
