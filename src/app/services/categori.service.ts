@@ -145,7 +145,7 @@ export class CategoriService {
       redirect: 'follow'
     };
 
-   return fetch(`${this.baseUrl}/api/images/`, requestOptions)
+   return fetch(`${this.baseUrl}/images/`, requestOptions)
 
   }
 

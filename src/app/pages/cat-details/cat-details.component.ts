@@ -81,6 +81,8 @@ export class CatDetailsComponent implements OnInit {
       console.log(res)
       this.product_id = res
       this.showUpload = true
+    },(err :any) => {
+      this.rest.erorrToaster(err.error.message)
     })
   }
 
