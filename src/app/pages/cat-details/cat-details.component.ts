@@ -18,7 +18,7 @@ export class CatDetailsComponent implements OnInit {
     image : "",
     products : [],
   }
-  product_arr:any
+  product_arr:any = []
   cat_name =""
   image_file = ""
   productForm: FormGroup | any;
@@ -45,13 +45,25 @@ export class CatDetailsComponent implements OnInit {
   getData(){
     this.rest.cat_full_details(this.cat_id).subscribe((res :any) => {
       console.log(res)
-      res.image.image = this._sanitizer.bypassSecurityTrustUrl(`data:image/png;base64,`+ res.image.image);
+      if(res.image.image != null){
+        res.image.image = this._sanitizer.bypassSecurityTrustUrl(`data:image/png;base64,`+ res.image.image);
+        this.cat_obj.image = res.image.image
+      }else {
+        this.cat_obj.image = "assets/images/rk.jpeg"
+      }
       this.cat_obj.name = res.name
-      this.cat_obj.image = res.image.image
-      res.products.forEach((element :any) => {
-        element.images[0] = this._sanitizer.bypassSecurityTrustUrl(`data:image/png;base64,`+ element.images[0].image);
-      });
-      this.product_arr = res.products
+      
+        res.products.forEach((element :any) => {
+          if(element.images.length != 0){
+            element.images[0] = this._sanitizer.bypassSecurityTrustUrl(`data:image/png;base64,`+ element.images[0].image);
+          }else {
+            element.images[0] = "assets/images/rk.jpeg"
+          }
+        });
+
+        this.product_arr = res.products
+      
+
       console.log(this.cat_obj.products)
       if(this.product_arr.length != 0){
         this.showProduct= true

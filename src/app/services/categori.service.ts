@@ -70,7 +70,7 @@ export class CategoriService {
       redirect: 'follow'
     };
 
-   return fetch("https://1275-156-213-96-209.ngrok.io/api/images/cat", requestOptions)
+   return fetch(`${this.baseUrl}/api/images/cat`, requestOptions)
 
   }
 
