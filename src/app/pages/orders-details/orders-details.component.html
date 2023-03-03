@@ -75,13 +75,13 @@
                             <thead>
                                 <tr>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Price</th>
+                                    <th scope="col">Amount</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr style="cursor: pointer" *ngFor="let pack of item.products">
-                                    <td>{{pack.name}}</td>
-                                    <td>{{pack.price}}</td>
+                                <tr style="cursor: pointer" *ngFor="let pack of item.ProductPackages">
+                                    <td>{{pack.products.name}}</td>
+                                    <td>{{pack.amount}}</td>
                                 </tr>
                             </tbody>
                         </table>
