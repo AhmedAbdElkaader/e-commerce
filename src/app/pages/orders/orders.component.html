@@ -5,10 +5,12 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Name</th>
                     <th scope="col">Products</th>
                     <th scope="col">Date</th>
-                    <th scope="col">Quantities</th>
+                    <th scope="col">Products</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Paid</th>
+                    <th scope="col">Delivered</th>
                     <th scope="col">Total Price</th>
 
                 </tr>
@@ -16,14 +18,20 @@
             <tbody *ngIf="!showMasge">
                 <tr style="cursor: pointer" (click)="orderDetails(item.id)" *ngFor="let item of order_arr">
                     <td>{{item.id}}</td>
-                    <td>{{item.client.email}}</td>
                     <td>{{item.OrdersProducts.length}}</td>
-                    <td>{{item.issue_date}}</td>
-                    <td>{{item.quantities}}</td>
+                    <td>{{item.issue_date | date:'EEEE d MMMM y '}}</td>
+                    <td>{{item.OrdersProducts.length}}</td>
+                    <td *ngIf="item.cashed == true">Cash On Delvery</td>
+                    <td *ngIf="item.cashed == false">Vodafon Cash</td>
+                    <td *ngIf="item.paid == null">No</td>
+                    <td *ngIf="item.paid != null">Yes</td>
+                    <td *ngIf="item.delivered == null">No</td>
+                    <td *ngIf="item.delivered != null">Yes</td>
                     <td>{{item.total_price}}</td>
                 </tr>
             </tbody>
             <h1 *ngIf="showMasge">NO DATA FOUND</h1>
         </table>
+
     </div>
 </section>

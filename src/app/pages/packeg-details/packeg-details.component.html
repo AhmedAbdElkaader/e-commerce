@@ -10,7 +10,9 @@
         <div class="col-12 col-md-6">
             <div class="row">
                 <div class="col">
-                    <img class="img-fluid" [src]="packImage">
+                    <img class="img-fluid"
+                    (error)="packImage = 'assets/images/rk.jpeg'"
+                     [src]="packImage">
                 </div>
                 <div class="col">
                     <h1>Name : {{packName}}</h1>
@@ -24,8 +26,9 @@
         <div class="row" *ngIf="showProduct">
             <div class="col-3" *ngFor="let item of product_arr">
                 <div  class="text-center">
-                    <img class="img-fluid" [src]="item.products.image[0]">
+                    <img class="img-fluid" (error)="item.products.image[0] = 'assets/images/rk.jpeg'"  [src]="item.products.image[0]">
                     <h2>{{item.products.name}}</h2>
+                    <p>Amount : {{item.amount}}</p>
                 </div>
             </div>
         </div>

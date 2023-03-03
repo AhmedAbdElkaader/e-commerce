@@ -47,7 +47,7 @@ export class PackegsComponent implements OnInit {
   }
 
   getdata(){
-    this.rest.list_Of_cat().subscribe((res :any) => {
+    this.rest.listCatOnly().subscribe((res :any) => {
       console.log(res)
       this.cat_arr = res
       this.rest.hideSpiner()
@@ -89,6 +89,7 @@ export class PackegsComponent implements OnInit {
   }
 
   save(){
+    this.rest.showSpiner()
     this.discount =+ this.discount
     let obj = {
       discount : this.discount,
@@ -98,8 +99,11 @@ export class PackegsComponent implements OnInit {
     console.log(obj)
     this.rest.addPack(obj).subscribe((res :any) => {
       console.log(res)
+      this.rest.hideSpiner()
       this.packId = res
       this.packImageStatus = false
+    },(err : any) => {
+      this.rest.hideSpiner()
     })
   }
 
@@ -120,7 +124,10 @@ export class PackegsComponent implements OnInit {
         this.rest.hideSpiner()
         console.log(result)
       })
-      .catch((error: any) => console.log('error', error));
+      .catch((error: any) => {
+        this.rest.hideSpiner()
+        this.rest.erorrToaster("something wrong happened please reload page")
+      });
   }
 
   packDetails(id:any){

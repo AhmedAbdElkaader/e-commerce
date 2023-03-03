@@ -38,6 +38,15 @@ export class CategoriService {
 
     return this.http.get(`${this.baseUrl}/cats/`, { headers: headers })
   }
+  listCatOnly(){
+    this.auth_token = localStorage.getItem("access_token")
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.auth_token}`
+    })
+
+    return this.http.get(`${this.baseUrl}/cats/listed`, { headers: headers })
+  }
 
   cat_details(id: any) {
     this.auth_token = localStorage.getItem("access_token")
@@ -266,7 +275,7 @@ export class CategoriService {
       redirect: 'follow'
     };
 
-   return fetch(`${this.baseUrl}/api/images/package`, requestOptions)
+   return fetch(`${this.baseUrl}/images/package`, requestOptions)
   }
 
   packDetails(id:any){
