@@ -1,7 +1,9 @@
 section{
-    overflow: scroll;
+    overflow-y: scroll;
     height: 80vh;
-    padding-bottom: 5px
+    padding-bottom: 5px;
+    overflow-x: hidden 
+
 }
 .controls {
     margin-bottom: 10px
@@ -16,6 +18,10 @@ section{
 hr {
     border-top: 1px solid #cacaca;
 }
+.headLine {
+    font-weight: bold
+}
+
 @media only screen and (max-width:768px) {
     .controls button{
         margin-bottom:15px

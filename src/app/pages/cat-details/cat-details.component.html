@@ -4,15 +4,14 @@
         <button mat-raised-button  data-bs-toggle="modal" data-bs-target="#category"> Edit Category</button>
         <button mat-raised-button color="warn" data-bs-toggle="modal" data-bs-target="#DeletCategory"> Delete Category</button>
     </div>
+    <div class=" mt-5">
+        <h1 class="headLine">- {{cat_obj.name | uppercase}}</h1>
+    </div>
     <div class="row">
-        <div class="col-12 col-md-5">
-            <img class="img-fluid" [src]="cat_obj.image">
-            <h1>{{cat_obj.name}}</h1>
-        </div>
         <hr>
         <h2>Prodcuts</h2>
         <div class="row" *ngIf="showProduct">
-            <div class="col-12 col-md-3" *ngFor="let item of product_arr">
+            <div class="col-6 col-md-3 col-xl-3" *ngFor="let item of product_arr">
                 <div (click)="productDetails(item.id)" class="text-center">
                         <img class="img-fluid" [src]="item.images[0]">
                         <h2>{{item.name}}</h2>

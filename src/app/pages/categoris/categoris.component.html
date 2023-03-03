@@ -1,7 +1,7 @@
 <div class="main">
     <div class="">
         <button class="add_button" mat-raised-button data-bs-toggle="modal" data-bs-target="#exampleModal"> + Add
-            New Categori</button>
+            New Category</button>
     </div>
     <div class="container">
         <div class="filter" *ngIf="dataFound">
@@ -11,7 +11,7 @@
             <input type="search" placeholder="Find Category ...." class="form-control">
         </div>
         <div class="row mt-5">
-            <div class="col-12 col-md-4 col-xl-4" *ngFor="let item of category_arr">
+            <div class="col-6 col-md-3 col-xl-3" *ngFor="let item of category_arr">
                 <div class="card_style" style="cursor: pointer" (click)="cat_details(item.id)">
                     <img class="img-fluid" [src]="item.image.image">
                     <h1 class="text-center">{{item.name}}</h1>
